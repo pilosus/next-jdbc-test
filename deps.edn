@@ -1,9 +1,13 @@
 {:paths ["src" "resources"]
- :deps {org.clojure/clojure {:mvn/version "1.11.1"}}
+ :deps
+ {org.clojure/clojure {:mvn/version "1.11.1"}
+  com.github.seancorfield/next.jdbc {:mvn/version "1.2.659"}
+  org.postgresql/postgresql {:mvn/version "42.6.0"}
+  com.zaxxer/HikariCP {:mvn/version "3.3.1"}}
  :aliases
  {:run-m {:main-opts ["-m" "org.pilosus.next-jdbc-test"]}
   :run-x {:ns-default org.pilosus.next-jdbc-test
-          :exec-fn greet
+          :exec-fn -main ;; FIXME
           :exec-args {:name "Clojure"}}
   :build {:deps {io.github.clojure/tools.build
                  {:git/tag "v0.9.4" :git/sha "76b78fe"}}
