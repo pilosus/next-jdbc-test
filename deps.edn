@@ -3,7 +3,9 @@
  {org.clojure/clojure {:mvn/version "1.11.1"}
   com.github.seancorfield/next.jdbc {:mvn/version "1.2.659"}
   org.postgresql/postgresql {:mvn/version "42.6.0"}
-  com.zaxxer/HikariCP {:mvn/version "3.3.1"}}
+  com.zaxxer/HikariCP {:mvn/version "3.3.1"}
+  mount/mount {:mvn/version "0.1.17"}
+  }
  :aliases
  {:run-m {:main-opts ["-m" "org.pilosus.next-jdbc-test"]}
   :run-x {:ns-default org.pilosus.next-jdbc-test
@@ -12,7 +14,10 @@
   :build {:deps {io.github.clojure/tools.build
                  {:git/tag "v0.9.4" :git/sha "76b78fe"}}
           :ns-default build}
+  ;; clojure -M:test
   :test {:extra-paths ["test"]
          :extra-deps {org.clojure/test.check {:mvn/version "1.1.1"}
                       io.github.cognitect-labs/test-runner
-                      {:git/tag "v0.5.1" :git/sha "dfb30dd"}}}}}
+                      {:git/tag "v0.5.1" :git/sha "dfb30dd"}}
+         :main-opts ["-m" "cognitect.test-runner"]
+         :exec-fn cognitect.test-runner.api/test}}}
